@@ -1,0 +1,31 @@
+{
+  "name": "com.acolinucci.sassgulppack",
+  "version": "1.0.0",
+  "description": "Builer plate for sass and gulp projects",
+  "main": "index.js",
+  "scripts": {
+    "start": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alessandrocolinucci/sass-gulp-starter.git"
+  },
+  "keywords": [
+    "sass",
+    "gulp"
+  ],
+  "author": "Alessandro Colinucci",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alessandrocolinucci/sass-gulp-starter/issues"
+  },
+  "homepage": "https://github.com/alessandrocolinucci/sass-gulp-starter#readme",
+  "devDependencies": {
+    "browser-sync": "^2.24.7",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.10.0",
+    "gulp-image": "^4.3.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.1"
+  }
+}
