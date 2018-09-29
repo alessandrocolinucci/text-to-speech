@@ -6,7 +6,7 @@ const minifycss = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 
 // Watch and Serve
-gulp.task('serve', ['copyhtml', 'sass', 'minifyjs', 'imageminify'], () => {
+gulp.task('serve', () => {
 
     broswerSync.init({
         server: './src'
@@ -21,6 +21,7 @@ gulp.task('copyhtml', () => {
     return gulp.src('src/*.html')
                .pipe(gulp.dest('dist'));
 });
+
 
 // Compile Sass and minify
 gulp.task('sass', () => {
@@ -44,5 +45,9 @@ gulp.task('imageminify', () => {
                .pipe(gulp.dest('dist/images'))
 })
 
+// Minify task
+gulp.task('minify', ['copyhtml', 'sass', 'minifyjs', 'imageminify']);
+
 // Default task
 gulp.task('default', ['serve']);
+
