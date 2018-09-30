@@ -1,13 +1,4 @@
 
-### Starter pack Sass/Gulp
+### Text to speech application
 
-Starter pack for each sass application. This application minify js, images and css (after compling it).
-
-## Install dependencies
-
-run  `npm install`
-
-## Run 
-
-run  `npm start`
-
+This is a text to speech application with Vanilla Javascript and web API
