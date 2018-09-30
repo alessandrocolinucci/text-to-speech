@@ -1,19 +1,19 @@
 const gulp = require('gulp');
 const minifyimg = require('gulp-image');
-const broswerSync = require('browser-sync');
+const browserSync = require('browser-sync');
 const sass = require('gulp-sass');
 const minifycss = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
 
-// Watch and Serve
+// Serve
 gulp.task('serve', () => {
 
-    broswerSync.init({
+    browserSync.init({
         server: './src'
     });
 
     gulp.watch(['src/scss/*.scss'], ['sass']);
-    gulp.watch(['src/*.html']).on('change', broswerSync.reload);
+    gulp.watch(['src/*.html']).on('change', browserSync.reload);
 })
 
 // Copy All HTML files
@@ -22,9 +22,25 @@ gulp.task('copyhtml', () => {
                .pipe(gulp.dest('dist'));
 });
 
+// Copy all fonts - requires to be .woff2
+gulp.task('copyfonts', () => {
+    return gulp.src('src/fonts/*.woff2')
+               .pipe(gulp.dest('dist/fonts'));
+});
+
 
 // Compile Sass and minify
+
+// Compile sass
 gulp.task('sass', () => {
+    return gulp.src(['src/scss/*.scss'])
+               .pipe(sass().on('error', sass.logError))
+               .pipe(gulp.dest("src/css"))
+               .pipe(browserSync.stream());
+});
+
+// Minify CSS
+gulp.task('minifycss', () => {
     return gulp.src(['src/scss/*.scss'])
                .pipe(sass().on('error', sass.logError))
                .pipe(minifycss())
@@ -46,7 +62,7 @@ gulp.task('imageminify', () => {
 })
 
 // Minify task
-gulp.task('minify', ['copyhtml', 'sass', 'minifyjs', 'imageminify']);
+gulp.task('minify', ['copyhtml', 'copyfonts', 'minifycss', 'minifyjs', 'imageminify']);
 
 // Default task
 gulp.task('default', ['serve']);
