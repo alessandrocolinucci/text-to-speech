@@ -1,9 +1,10 @@
+const browserSync = require('browser-sync');
 const gulp = require('gulp');
 const minifyimg = require('gulp-image');
-const browserSync = require('browser-sync');
 const sass = require('gulp-sass');
 const minifycss = require('gulp-clean-css');
 const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
 
 // Serve
 gulp.task('serve', () => {
@@ -50,6 +51,9 @@ gulp.task('minifycss', () => {
 // Minify JS
 gulp.task('minifyjs', () => {
     return gulp.src('src/js/*.js')
+               .pipe(babel({
+                    presets: ['es2015']
+                }))
                .pipe(uglify())
                .pipe(gulp.dest('dist/js'))
 })
