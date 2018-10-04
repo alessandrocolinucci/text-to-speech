@@ -43,16 +43,17 @@ if (synth.onvoiceschanged !== undefined) {
 
 const speak = () => {
 
-    body.style.background = '#141414 url(images/wave.gif)';
-    body.style.backgroundRepeat = 'repeat-x';
-    body.style.backgroundSize = '100% 100%';
-
     // Check if speaking
     if (synth.speaking) {
         console.error('%c Already speaking', '#FF0000; font-weight: bold')
     }
 
     if (textToSpeak.value !== '') {
+        
+        body.style.background = '#141414 url(images/wave.gif)';
+        body.style.backgroundRepeat = 'repeat-x';
+        body.style.backgroundSize = '100% 100%';
+
         //Get speak text
         const speakText = new SpeechSynthesisUtterance(textToSpeak.value);
         //Speak end
@@ -82,7 +83,7 @@ const speak = () => {
 
         // Speak
         synth.speak(speakText);
-    }
+    }  
 }
 
 // EVENT LISTENERS
@@ -101,4 +102,4 @@ speakButton.addEventListener('click', e => {
 })
 
 // Voice select change
-voiceSelect.addEventListener('change', e => speak());
+voiceSelect.addEventListener('change', () => speak());

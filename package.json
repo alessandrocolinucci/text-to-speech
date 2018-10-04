@@ -29,8 +29,10 @@
     "gulp-babel": "^8.0.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-image": "^4.3.0",
+    "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.1",
-    "gulp-uglify": "^3.0.1"
+    "gulp-uglify": "^3.0.1",
+    "gulp-uglifyes": "^0.2.1"
   },
   "dependencies": {
     "lodash": "^4.17.11",
